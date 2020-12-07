@@ -9,6 +9,8 @@ function run(creep) {
                 let status;
                 if (creep.memory.gathering == LOOK_SOURCES) {
                     status = creep.harvest(source);
+                } else if (creep.memory.gathering == LOOK_STRUCTURES) {
+                    status = creep.withdraw(source, RESOURCE_ENERGY);
                 } else {
                     status = creep.pickup(source);
                 }
@@ -41,10 +43,11 @@ function run(creep) {
         let room = Game.rooms[creep.memory.room];
 
         // try to find a source
-        let rs = room.find(FIND_DROPPED_RESOURCES, {filter: (obj) => obj.resourceType == RESOURCE_ENERGY});
+        let rs = room.find(FIND_STRUCTURES, {filter: (obj) => obj.structureType == STRUCTURE_CONTAINER && obj.store[RESOURCE_ENERGY] > 0});
+        rs = rs.concat(room.find(FIND_DROPPED_RESOURCES, {filter: (obj) => obj.resourceType == RESOURCE_ENERGY}));
         if (rs.length > 0) {
             let r = rs[Math.floor(Math.random() * rs.length)];
-            creep.memory.gathering = LOOK_RESOURCES;
+            creep.memory.gathering = r.structureType ? LOOK_STRUCTURES : LOOK_RESOURCES;
             creep.memory.source = r.id;
             return;
         }

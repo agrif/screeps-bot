@@ -1,6 +1,6 @@
 module.exports.roles = ['worker'];
 
-let ENERGY_PER_JOB = 50;
+let ENERGY_PER_JOB = 150;
 
 function discover(tasks, room) {
     room.find(FIND_MY_STRUCTURES, {

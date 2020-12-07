@@ -2,8 +2,9 @@ module.exports.roles = ['harvester'];
 
 function discover(tasks, room) {
     // FIXME multiple sources, take care about danger!
-    let obj = room.find(FIND_SOURCES_ACTIVE)[0];
-    tasks.add(room, 'harvest', 'energy', tasks.MEDIUM, obj.id, 'source', 3);
+    room.find(FIND_SOURCES_ACTIVE).forEach((obj) => {
+        tasks.add(room, 'harvest', 'energy', tasks.MEDIUM, obj.id, 'source', 1);
+    });
 }
 
 function perform(tasks, worker, task, obj) {

@@ -1,6 +1,6 @@
 module.exports.roles = ['tower', 'healer'];
 
-let ENERGY_PER_JOB = 50;
+let ENERGY_PER_JOB = 150;
 let HEAL_PER_ENERGY = 12;
 
 function discover(tasks, room) {

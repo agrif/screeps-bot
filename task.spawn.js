@@ -2,8 +2,8 @@ let names = require('names');
 
 module.exports.roles = ['spawner'];
 
-let MAX_HARVESTERS = 3;
-let MAX_WORKERS = 5;
+let MAX_HARVESTERS = 2;
+let MAX_WORKERS = 8;
 
 function discover(tasks, room) {
     let creeps = room.find(FIND_MY_CREEPS);
@@ -24,11 +24,11 @@ function perform(tasks, worker, task, obj) {
         role = 'worker';
         letters = 'EM';
     } else if (task.subtype == 'harvester') {
-        body = [WORK, WORK, MOVE, MOVE];
+        body = [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE];
         role = 'harvester';
         letters = 'HV';
     } else if (task.subtype == 'worker') {
-        body = [WORK, WORK, CARRY, MOVE];
+        body = [WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE];
         role = 'worker';
         letters = 'WK';
     } else {

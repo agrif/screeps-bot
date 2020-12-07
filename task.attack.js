@@ -1,6 +1,6 @@
 module.exports.roles = ['tower', 'attacker'];
 
-let ENERGY_PER_JOB = 50;
+let ENERGY_PER_JOB = 150;
 let ATTACK_PER_ENERGY = 30;
 
 function discover(tasks, room) {

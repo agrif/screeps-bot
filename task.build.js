@@ -1,6 +1,6 @@
 module.exports.roles = ['worker'];
 
-let ENERGY_PER_JOB = 50;
+let ENERGY_PER_JOB = 150;
 let CONSTRUCTION_PER_ENERGY = 1;
 
 function discover(tasks, room) {
